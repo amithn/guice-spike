@@ -25,7 +25,6 @@ public class AppConfig implements Module {
         binder.bind(CopyTask.class).toInstance(copyTask());
         binder.bind(TransferTask.class).toInstance(transferTask());
         binder.bind(Arguments.class).toInstance(consoleArguments());
-        binder.bind(DemographicVisitsJob.class).toInstance(demographicVisits());
     }
 
 
