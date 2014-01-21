@@ -2,6 +2,7 @@ package com.spike.config;
 
 
 import com.google.inject.Binder;
+import com.google.inject.Inject;
 import com.google.inject.Module;
 import com.google.inject.Provides;
 import com.spike.Job.DemographicVisitsJob;
@@ -16,8 +17,13 @@ import com.spike.tasks.*;
 import com.spike.util.Arguments;
 import com.spike.util.ConsoleArguments;
 
-
 public class AppConfig implements Module {
+
+	@Inject
+	HDFSService hdfsService;
+
+	@Inject
+	JobService jobService;
 
     @Override
     public void configure(Binder binder) {
@@ -41,24 +47,18 @@ public class AppConfig implements Module {
     }
 
     public IdDomainTask idDomainTask() {
-        return new IdDomainTask(hdfsService(), jobService(), consoleArguments());
+        return new IdDomainTask(hdfsService,
+								jobService,
+								consoleArguments());
     }
 
     public CopyTask copyTask() {
-        return new CopyTask(hdfsService());
+        return new CopyTask(hdfsService);
     }
 
     public TransferTask transferTask() {
-        return new TransferTask(hdfsService());
+        return new TransferTask(hdfsService);
     }
 
-    @Provides
-    public HDFSService hdfsService() {
-        return new SweetHDFSServiceImpl();
-    }
 
-    @Provides
-    public JobService jobService() {
-        return new SuperJobServiceImpl(hdfsService());
-    }
 }

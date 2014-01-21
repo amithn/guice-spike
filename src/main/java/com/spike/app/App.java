@@ -3,6 +3,7 @@ package com.spike.app;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.spike.config.AppConfig;
+import com.spike.config.ServiceConfig;
 import com.spike.tasks.IdDomainTask;
 
 public class App {
@@ -11,7 +12,7 @@ public class App {
 
     public static void main(String args[]) {
         consoleargs = args;
-        Injector injector = Guice.createInjector(new AppConfig());
+        Injector injector = Guice.createInjector(new AppConfig(), new ServiceConfig());
         IdDomainTask task = injector.getInstance(IdDomainTask.class);
         task.execute();
     }
