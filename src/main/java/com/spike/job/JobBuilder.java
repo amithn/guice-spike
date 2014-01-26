@@ -5,13 +5,6 @@ import com.spike.tasks.Task;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: cloudera
- * Date: 1/18/14
- * Time: 11:28 PM
- * To change this template use File | Settings | File Templates.
- */
 public class JobBuilder {
     private List<Task> tasks;
 

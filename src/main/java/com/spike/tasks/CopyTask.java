@@ -6,6 +6,10 @@ import com.spike.util.Arguments;
 
 import java.util.Arrays;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 48c52070024dc7dd412fe361b305ff06e493b113
 public class CopyTask implements Task {
 
     private HDFSService hdfsService;
