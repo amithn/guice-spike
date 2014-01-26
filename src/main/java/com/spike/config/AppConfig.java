@@ -4,8 +4,8 @@ package com.spike.config;
 import com.google.inject.Binder;
 import com.google.inject.Module;
 import com.google.inject.Provides;
-import com.spike.Job.DemographicVisitsJob;
 import com.spike.app.App;
+import com.spike.job.DemogVisitsJob;
 import com.spike.job.Job;
 import com.spike.job.JobBuilder;
 import com.spike.service.HDFSService;
@@ -29,11 +29,12 @@ public class AppConfig implements Module {
 
 
     @Provides
-    public Job demographicVisits() {
-         return new JobBuilder().addTask(copyTask())
+    public DemogVisitsJob demographicVisits() {
+         return (DemogVisitsJob) new JobBuilder()
+                         .addTask(copyTask())
                          .addTask(transferTask())
                          .addTask(idDomainTask())
-                         .addTask(new DemographicVisitsJob()).build();
+                         .build();
     }
 
     public Arguments consoleArguments() {
