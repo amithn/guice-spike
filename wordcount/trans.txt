@@ -1,3 +1,0 @@
-4,Lamborgini,TOYS,49.00
-5,iPad,TOYS,150.00
-4,Lee,CLOTHES,99.50
