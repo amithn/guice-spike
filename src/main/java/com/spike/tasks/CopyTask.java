@@ -6,10 +6,6 @@ import com.spike.util.Arguments;
 
 import java.util.Arrays;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 48c52070024dc7dd412fe361b305ff06e493b113
 public class CopyTask implements Task {
 
     private HDFSService hdfsService;
@@ -17,12 +13,14 @@ public class CopyTask implements Task {
     @Inject
     Arguments consoleArgs;
 
+    @Inject
     public CopyTask(HDFSService hdfsService) {
         this.hdfsService = hdfsService;
     }
 
     @Override
     public void execute() {
-        System.out.println("Executing copyTask from hdfs" + Arrays.toString(consoleArgs.get()));
+        System.out.println("Executing copyTask from local" + Arrays.toString(consoleArgs.get()));
+        hdfsService.copyFileToHDFS("/home/cloudera/hivedata/transactions.txt", "trans.txt");
     }
 }

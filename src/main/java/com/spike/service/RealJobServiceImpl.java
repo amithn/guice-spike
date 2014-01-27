@@ -1,10 +1,13 @@
 package com.spike.service;
 
 
-public class SuperJobServiceImpl implements JobService {
+import com.google.inject.Inject;
+
+public class RealJobServiceImpl implements JobService {
     HDFSService hdfsService;
 
-    public SuperJobServiceImpl(HDFSService hdfsService) {
+    @Inject
+    public RealJobServiceImpl(HDFSService hdfsService) {
         this.hdfsService = hdfsService;
     }
 

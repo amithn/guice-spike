@@ -1,15 +1,9 @@
 package com.spike.app;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import com.spike.config.AppConfig;
-import com.spike.config.ServiceConfig;
-import com.spike.job.DemogVisitsJob;
 import com.spike.job.Job;
 import com.spike.job.JobBuilder;
 import com.spike.tasks.CopyTask;
-import com.spike.tasks.IdDomainTask;
-import com.spike.tasks.TransferTask;
+import com.spike.tasks.WordCountTask;
 
 public class App {
 
@@ -17,15 +11,10 @@ public class App {
 
     public static void main(String args[]) {
         consoleargs = args;
-        Injector injector = Guice.createInjector(new AppConfig(), new ServiceConfig());
-        IdDomainTask task = injector.getInstance(IdDomainTask.class);
-        CopyTask copyTask = injector.getInstance(CopyTask.class);
-        TransferTask transferTask = injector.getInstance(TransferTask.class);
-
-        DemogVisitsJob demogVisits = injector.getInstance(DemogVisitsJob.class);
-
-        Job job = new JobBuilder().addTask(transferTask).addTask(task).addTask(copyTask).build();
-        job.execute();
+        Job canadaJob = new JobBuilder<Job>(Job.class).addTask(CopyTask.class)
+                                                      .addTask(WordCountTask.class)
+                                                      .build();
+        canadaJob.execute();
     }
 
     public static String[] getArgs() {

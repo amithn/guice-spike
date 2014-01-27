@@ -1,25 +1,28 @@
 package com.spike.job;
 
+import com.google.inject.Injector;
+import com.spike.app.GuiceFactory;
 import com.spike.tasks.Task;
 
 import java.util.List;
 
-public class Job implements Task {
-    private List<Task> tasks;
+public class Job<T> implements Task {
+    private List<Class> tasks;
 
     public Job() {
-
     }
 
-    public Job(List<Task> tasks) {
-        this.tasks = tasks;
-    }
-
-    public void execute() {
-        for(Task task : tasks) {
+    public final void execute() {
+        for(Class<Task> task : tasks) {
               System.out.println("Executing task " + task.getClass().getSimpleName());
-              task.execute();
+              Injector injector = GuiceFactory.getInjector();
+              Task injectedTask = injector.getInstance(task);
+              injectedTask.execute();
         }
+    }
+
+    public void setTasks(List<Class> tasks) {
+        this.tasks = tasks;
     }
 
 }

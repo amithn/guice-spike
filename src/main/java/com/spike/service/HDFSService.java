@@ -1,12 +1,9 @@
 package com.spike.service;
 
 
-import java.io.File;
-
 public interface HDFSService {
 
-    File getFile();
-    int  getFileSize();
+    void copyFileToHDFS(String source, String destination);
 
 
 }

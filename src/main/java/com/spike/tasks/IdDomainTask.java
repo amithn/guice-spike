@@ -23,7 +23,5 @@ public class IdDomainTask implements Task {
     @Override
     public void execute() {
         System.out.println("Arguments are as follows " + Arrays.toString(consoleArguments.get()));
-        hdfsService.getFileSize();
-        hdfsService.getFile();
     }
 }
