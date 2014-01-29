@@ -13,7 +13,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="TEST" name="hamcrest-core-1.2.1" level="project" />
-    <orderEntry type="library" exported="" name="asm-3.1" level="project" />
     <orderEntry type="library" exported="" name="javax.inject-1" level="project" />
     <orderEntry type="library" exported="" name="guice-3.0" level="project" />
     <orderEntry type="library" exported="" name="junit-4.8.2" level="project" />
@@ -59,6 +58,42 @@
     <orderEntry type="library" exported="" name="hadoop-auth-2.0.0-cdh4.4.0" level="project" />
     <orderEntry type="library" exported="" name="commons-lang-2.5" level="project" />
     <orderEntry type="library" exported="" name="jsch-0.1.42" level="project" />
+    <orderEntry type="library" exported="" name="hive-exec-0.8.1" level="project" />
+    <orderEntry type="library" exported="" name="libthrift-0.7.0" level="project" />
+    <orderEntry type="library" exported="" name="datanucleus-core-2.0.3" level="project" />
+    <orderEntry type="library" exported="" name="jsp-api-2.1" level="project" />
+    <orderEntry type="library" exported="" name="jetty-util-6.1.26.cloudera.2" level="project" />
+    <orderEntry type="library" exported="" name="stringtemplate-3.1-b1" level="project" />
+    <orderEntry type="library" exported="" name="hive-shims-0.8.1" level="project" />
+    <orderEntry type="library" exported="" name="commons-dbcp-1.4" level="project" />
+    <orderEntry type="library" exported="" name="json-20090211" level="project" />
+    <orderEntry type="library" exported="" name="antlr-runtime-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="commons-httpclient-3.1" level="project" />
+    <orderEntry type="library" exported="" name="jdo2-api-2.3-ec" level="project" />
+    <orderEntry type="library" exported="" name="jetty-6.1.26.cloudera.2" level="project" />
+    <orderEntry type="library" exported="" name="antlr-2.7.7" level="project" />
+    <orderEntry type="library" exported="" name="jasper-compiler-5.5.23" level="project" />
+    <orderEntry type="library" exported="" name="jets3t-0.6.1" level="project" />
+    <orderEntry type="library" exported="" name="hive-service-0.8.1" level="project" />
+    <orderEntry type="library" exported="" name="core-3.1.1" level="project" />
+    <orderEntry type="library" exported="" name="datanucleus-enhancer-2.0.3" level="project" />
+    <orderEntry type="library" exported="" name="httpcore-4.0.1" level="project" />
+    <orderEntry type="library" exported="" name="asm-3.3.1" level="project" />
+    <orderEntry type="library" exported="" name="hive-serde-0.8.1" level="project" />
+    <orderEntry type="library" exported="" name="commons-pool-1.5.4" level="project" />
+    <orderEntry type="library" exported="" name="derby-10.4.2.0" level="project" />
+    <orderEntry type="library" exported="" name="datanucleus-connectionpool-2.0.3" level="project" />
+    <orderEntry type="library" exported="" name="jta-1.1" level="project" />
+    <orderEntry type="library" exported="" name="jasper-runtime-5.5.23" level="project" />
+    <orderEntry type="library" exported="" name="hive-metastore-0.8.1" level="project" />
+    <orderEntry type="library" exported="" name="commons-logging-api-1.0.4" level="project" />
+    <orderEntry type="library" exported="" name="servlet-api-2.5" level="project" />
+    <orderEntry type="library" exported="" name="libfb303-0.7.0" level="project" />
+    <orderEntry type="library" exported="" name="httpclient-4.0.1" level="project" />
+    <orderEntry type="library" exported="" name="hive-jdbc-0.8.1" level="project" />
+    <orderEntry type="library" exported="" name="datanucleus-rdbms-2.0.3" level="project" />
+    <orderEntry type="library" exported="" name="antlr-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="hive-common-0.8.1" level="project" />
   </component>
 </module>
 
