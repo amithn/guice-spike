@@ -5,13 +5,11 @@ import com.spike.tasks.Task;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JobBuilder<T extends Job> {
+public class JobBuilder {
 
-    Class<T> clazz;
-    List<Class<?>> tasks = new ArrayList<Class<?>>();
+    List<Class<? extends Task>> tasks = new ArrayList<Class<? extends Task>>();
 
-    public JobBuilder(Class<T> clazz) {
-        this.clazz = clazz;
+    public JobBuilder() {
     }
 
     public JobBuilder addTask(Class<? extends Task> task) {
@@ -19,16 +17,9 @@ public class JobBuilder<T extends Job> {
         return this;
     }
 
-    public T build() {
-        T instance = null;
-        try {
-            instance = clazz.newInstance();
-            instance.setTasks(tasks);
-        } catch (InstantiationException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
+    public Job build() {
+        Job instance = new Job();
+        instance.setTasks(tasks);
         return instance;
     }
 }

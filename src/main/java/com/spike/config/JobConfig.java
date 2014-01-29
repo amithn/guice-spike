@@ -23,13 +23,4 @@ public class JobConfig implements Module {
     @Override
     public void configure(Binder binder) {
     }
-
-    @Provides
-    public <T> Job<T> canadaJob() {
-       return new JobBuilder<CanadaJob>(CanadaJob.class).addTask(CopyTask.class)
-                                         .addTask(TransferTask.class)
-                                         .build();
-    }
-
-
 }

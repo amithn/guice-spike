@@ -39,7 +39,7 @@ public class ServiceConfig implements Module {
     public FileSystem fileSystem(Configuration conf) {
         FileSystem fs = null;
         try {
-               fs = FileSystem.get(new URI("hdfs://localhost.localdomain:8020"), conf);
+               fs = FileSystem.get(new URI("file://"), conf);
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (URISyntaxException e) {

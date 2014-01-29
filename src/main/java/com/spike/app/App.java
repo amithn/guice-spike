@@ -2,8 +2,8 @@ package com.spike.app;
 
 import com.spike.job.Job;
 import com.spike.job.JobBuilder;
-import com.spike.tasks.CopyTask;
-import com.spike.tasks.WordCountTask;
+import com.spike.tasks.DriveTask;
+import com.spike.tasks.PrintTask;
 
 public class App {
 
@@ -11,9 +11,10 @@ public class App {
 
     public static void main(String args[]) {
         consoleargs = args;
-        Job canadaJob = new JobBuilder<Job>(Job.class).addTask(CopyTask.class)
-                                                      .addTask(WordCountTask.class)
-                                                      .build();
+        Job canadaJob = new JobBuilder().addTask(PrintTask.class)
+									    .addTask(DriveTask.class)
+									    .build();
+
         canadaJob.execute();
     }
 
