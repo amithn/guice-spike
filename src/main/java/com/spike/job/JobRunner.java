@@ -1,19 +1,23 @@
 package com.spike.job;
-import  com.spike.tasks.Task;
 
+import com.google.inject.Inject;
+import com.spike.util.GuiceTaskFactory;
+import com.spike.tasks.Task;
 
+public class JobRunner {
 
-public class JobRunner implements Task {
+	@Inject
+	private GuiceTaskFactory factory;
 
-	private Job job;
-
-	public JobRunner(Job job) {
-		this.job = job;
+	public JobRunner() {
 	}
 
-	@Override
-	public void execute() {
-		job.execute();
+	public void execute(Job job) {
+		for(Class<? extends Task> task : job.getTasks()) {
+			Task injectedTask = factory.getInstance(task);
+			System.out.println("Executing task " + injectedTask.getClass().getSimpleName());
+			injectedTask.execute();
+		}
 	}
 
 

@@ -21,37 +21,37 @@ public class ServiceConfig implements Module {
 
     @Override
 	public void configure(Binder binder) {
-        binder.bind(HDFSService.class).to(RealHDFSService.class);
-        binder.bind(JobService.class).to(RealJobServiceImpl.class);
+//        binder.bind(HDFSService.class).to(RealHDFSService.class);
+//        binder.bind(JobService.class).to(RealJobServiceImpl.class);
         binder.bind(String.class)
                 .annotatedWith(Names.named("HDFSURI"))
                 .toInstance("hdfs://localhost.localdomain:8020");
 	}
 
-    @Provides
-    @Singleton
-    public Configuration configuration() {
-        return new Configuration();
-    }
-
-    @Provides
-    @Singleton
-    public FileSystem fileSystem(Configuration conf) {
-        FileSystem fs = null;
-        try {
-               fs = FileSystem.get(new URI("file://"), conf);
-        } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (URISyntaxException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-        return fs;
-    }
-
-	@Provides
-    @Singleton
-	public RealHDFSService hdfsService() {
-		return new RealHDFSService(fileSystem(configuration()));
-	}
+//    @Provides
+//    @Singleton
+//    public Configuration configuration() {
+//        return new Configuration();
+//    }
+//
+//    @Provides
+//    @Singleton
+//    public FileSystem fileSystem(Configuration conf) {
+//        FileSystem fs = null;
+//        try {
+//               fs = FileSystem.get(new URI("file://"), conf);
+//        } catch (IOException e) {
+//            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+//        } catch (URISyntaxException e) {
+//            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+//        }
+//        return fs;
+//    }
+//
+//	@Provides
+//    @Singleton
+//	public RealHDFSService hdfsService() {
+//		return new RealHDFSService(fileSystem(configuration()));
+//	}
 
 }

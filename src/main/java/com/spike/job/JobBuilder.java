@@ -18,8 +18,6 @@ public class JobBuilder {
     }
 
     public Job build() {
-        Job instance = new Job();
-        instance.setTasks(tasks);
-        return instance;
+        return new Job(tasks);
     }
 }
