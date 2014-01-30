@@ -34,6 +34,7 @@ sourceSets {
 dependencies {
     compile "com.google.inject:guice:3.0"
     compile "org.apache.hadoop:hadoop-client:2.0.0-mr1-cdh4.4.0"
+    compile "org.apache.hive:hive-jdbc:0.8.1"
     testCompile "junit:junit:4.8.2"
     testCompile "org.hamcrest:hamcrest-core:1.2.1"
 }
