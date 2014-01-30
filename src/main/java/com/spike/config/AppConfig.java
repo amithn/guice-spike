@@ -9,6 +9,7 @@ import com.google.inject.Module;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.spike.app.App;
+import com.spike.app.Main;
 import com.spike.util.Arguments;
 import com.spike.util.ConsoleArguments;
 import com.spike.util.GuiceTaskFactory;
@@ -34,7 +35,7 @@ public class AppConfig implements Module {
     }
 
     public Arguments consoleArguments() {
-         return new ConsoleArguments(App.getArgs());
+         return new ConsoleArguments(Main.getArgs());
     }
 
 
