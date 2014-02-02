@@ -2,7 +2,7 @@ package com.spike.service;
 
 import com.google.inject.Inject;
 
-import javax.annotation.Nullable;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -11,7 +11,7 @@ public class HiveServiceJDBCImpl implements HiveService {
     HiveConnection connection;
 
     @Inject
-    public HiveServiceJDBCImpl(HiveConnection connection, String something) {
+    public HiveServiceJDBCImpl(HiveConnection connection) {
        this.connection = connection;
     }
 
