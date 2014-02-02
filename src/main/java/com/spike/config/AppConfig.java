@@ -2,12 +2,7 @@ package com.spike.config;
 
 
 import com.google.inject.Binder;
-import com.google.inject.Guice;
-import com.google.inject.Inject;
-import com.google.inject.Injector;
 import com.google.inject.Module;
-import com.google.inject.Provides;
-import com.google.inject.Singleton;
 import com.spike.app.App;
 import com.spike.app.Main;
 import com.spike.util.Arguments;

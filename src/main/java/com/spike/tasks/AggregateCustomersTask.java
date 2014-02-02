@@ -3,6 +3,8 @@ package com.spike.tasks;
 import com.spike.service.HiveService;
 
 import javax.inject.Inject;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Author: Amith Nambiar<amith.nmbr@gmail.com>
@@ -17,9 +19,15 @@ public class AggregateCustomersTask implements Task {
         this.hiveService = hiveService;
     }
 
-
     @Override
     public void execute() {
-        hiveService.execute("show tables");
+        ResultSet resultSet = hiveService.executeQuery("show tables");
+        try {
+            while(resultSet.next()) {
+                System.out.println("Table Name is " + resultSet.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
     }
 }

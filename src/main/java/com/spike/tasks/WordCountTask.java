@@ -2,7 +2,6 @@ package com.spike.tasks;
 
 import com.google.inject.Inject;
 import com.spike.service.HDFSService;
-import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;

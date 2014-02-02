@@ -1,8 +1,8 @@
 package com.spike.job;
 
 import com.google.inject.Inject;
-import com.spike.util.GuiceTaskFactory;
 import com.spike.tasks.Task;
+import com.spike.util.GuiceTaskFactory;
 
 public class JobRunner {
 

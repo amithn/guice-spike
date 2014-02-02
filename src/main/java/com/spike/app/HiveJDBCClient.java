@@ -1,11 +1,7 @@
 package com.spike.app;
 
 
-import java.sql.SQLException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.DriverManager;
+import java.sql.*;
 
 public class HiveJDBCClient {
     private static String driverName = "org.apache.hive.jdbc.HiveDriver";

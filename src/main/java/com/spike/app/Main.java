@@ -16,10 +16,12 @@ public class Main {
         consoleargs = args;
         App app = GuiceTaskFactory.getInstance(App.class);
 
-        Job canadaJob = new JobBuilder().addTask(PrintTask.class)
+        Job canadaJob = new JobBuilder()
+                .addTask(PrintTask.class)
                 .addTask(DriveTask.class)
                 .addTask(AggregateCustomersTask.class)
                 .build();
+
         app.run(canadaJob);
     }
 
