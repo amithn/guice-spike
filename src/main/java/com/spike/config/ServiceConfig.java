@@ -2,31 +2,25 @@ package com.spike.config;
 
 import com.google.inject.Binder;
 import com.google.inject.Module;
-import com.google.inject.Provides;
-import com.google.inject.Singleton;
 import com.google.inject.name.Names;
-import com.spike.service.HDFSService;
-import com.spike.service.JobService;
-import com.spike.service.RealHDFSService;
-import com.spike.service.RealJobServiceImpl;
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.FileSystem;
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
+import com.spike.service.HiveConnection;
+import com.spike.service.HiveConnectionFactory;
+import com.spike.service.HiveService;
+import com.spike.service.HiveServiceJDBCImpl;
 
 
 public class ServiceConfig implements Module {
 
     @Override
-	public void configure(Binder binder) {
+    public void configure(Binder binder) {
 //        binder.bind(HDFSService.class).to(RealHDFSService.class);
 //        binder.bind(JobService.class).to(RealJobServiceImpl.class);
         binder.bind(String.class)
                 .annotatedWith(Names.named("HDFSURI"))
                 .toInstance("hdfs://localhost.localdomain:8020");
-	}
+        binder.bind(HiveConnection.class).toInstance(HiveConnectionFactory.createNew());
+        binder.bind(HiveService.class).to(HiveServiceJDBCImpl.class);
+    }
 
 //    @Provides
 //    @Singleton

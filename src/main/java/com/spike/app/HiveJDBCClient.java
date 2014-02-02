@@ -22,7 +22,7 @@ public class HiveJDBCClient {
             System.exit(1);
         }
         //replace "hive" here with the name of the user the queries should run as
-        Connection con = DriverManager.getConnection("jdbc:hive2://localhost:10000/default", "hive", "");
+        Connection con = DriverManager.getConnection("jdbc:hive2://localhost:10000/default", "cloudera", "cloudera");
         Statement stmt = con.createStatement();
 
         String sql = "show tables";
