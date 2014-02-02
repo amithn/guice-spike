@@ -23,7 +23,7 @@ public class AggregateCustomersTask implements Task {
     public void execute() {
         ResultSet resultSet = hiveService.executeQuery("show tables");
         try {
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 System.out.println("Table Name is " + resultSet.getString(1));
             }
         } catch (SQLException e) {

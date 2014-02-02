@@ -9,10 +9,10 @@ public class Job {
     private List<Class<? extends Task>> tasks = new ArrayList<Class<? extends Task>>();
 
     protected Job(List<Class<? extends Task>> tasks) {
-		this.tasks = tasks;
+        this.tasks = tasks;
     }
 
-	public List<Class<? extends Task>>  getTasks() {
-		return tasks;
-	}
+    public List<Class<? extends Task>> getTasks() {
+        return tasks;
+    }
 }

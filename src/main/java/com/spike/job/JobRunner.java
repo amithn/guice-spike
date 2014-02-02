@@ -6,19 +6,19 @@ import com.spike.util.GuiceTaskFactory;
 
 public class JobRunner {
 
-	@Inject
-	private GuiceTaskFactory factory;
+    @Inject
+    private GuiceTaskFactory factory;
 
-	public JobRunner() {
-	}
+    public JobRunner() {
+    }
 
-	public void execute(Job job) {
-		for(Class<? extends Task> task : job.getTasks()) {
-			Task injectedTask = factory.getInstance(task);
-			System.out.println("Executing task " + injectedTask.getClass().getSimpleName());
-			injectedTask.execute();
-		}
-	}
+    public void execute(Job job) {
+        for (Class<? extends Task> task : job.getTasks()) {
+            Task injectedTask = factory.getInstance(task);
+            System.out.println("Executing task " + injectedTask.getClass().getSimpleName());
+            injectedTask.execute();
+        }
+    }
 
 
 }

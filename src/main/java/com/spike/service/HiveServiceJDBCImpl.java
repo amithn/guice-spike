@@ -12,7 +12,7 @@ public class HiveServiceJDBCImpl implements HiveService {
 
     @Inject
     public HiveServiceJDBCImpl(HiveConnection connection) {
-       this.connection = connection;
+        this.connection = connection;
     }
 
     @Override

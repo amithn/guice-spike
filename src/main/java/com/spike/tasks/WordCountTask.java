@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 
-public class WordCountTask implements Task{
+public class WordCountTask implements Task {
 
     HDFSService hdfsService;
 
@@ -30,7 +30,7 @@ public class WordCountTask implements Task{
         private Text word = new Text();
 
         public void map(LongWritable key, Text value, OutputCollector<Text, IntWritable> output, Reporter reporter) throws IOException {
-            FileSplit fileSplit = (FileSplit)reporter.getInputSplit();
+            FileSplit fileSplit = (FileSplit) reporter.getInputSplit();
             String filename = fileSplit.getPath().getName();
 
             String line = value.toString();

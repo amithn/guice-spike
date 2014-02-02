@@ -9,14 +9,14 @@ import com.spike.tasks.Task;
 public class GuiceTaskFactory {
     private static final Injector injector;
 
-	static {
-		injector = Guice.createInjector(new AppConfig(), new ServiceConfig());
-	}
+    static {
+        injector = Guice.createInjector(new AppConfig(), new ServiceConfig());
+    }
 
-	public static <T> T getInstance(Class<T> clazz) {
-		return injector.getInstance(clazz);
+    public static <T> T getInstance(Class<T> clazz) {
+        return injector.getInstance(clazz);
 
-	}
+    }
 
     public static Task getTask(Class<? extends Task> taskInstance) {
         return injector.getInstance(taskInstance);

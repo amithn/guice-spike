@@ -1,10 +1,10 @@
 package com.spike.util;
 
 
-public class Car  {
+public class Car {
 
-			public void drive() {
+    public void drive() {
 
-		   }
+    }
 
 }

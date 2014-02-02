@@ -12,8 +12,8 @@ public class RealHDFSService implements HDFSService {
 
     @Inject
     public RealHDFSService(FileSystem fileSystem) {
-          this.fileSystem = fileSystem;
-          System.out.println("Home is " + fileSystem.getScheme());
+        this.fileSystem = fileSystem;
+        System.out.println("Home is " + fileSystem.getScheme());
     }
 
     @Override
