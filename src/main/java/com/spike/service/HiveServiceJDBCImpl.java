@@ -19,9 +19,10 @@ public class HiveServiceJDBCImpl implements HiveService {
     public void execute(String query) {
         Statement statement = getStatement();
         try {
-            statement.executeQuery(query);
+            statement.execute(query);
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("Error is " + e.getMessage());
         }
     }
 
@@ -32,17 +33,31 @@ public class HiveServiceJDBCImpl implements HiveService {
         try {
             resultSet = statement.executeQuery(query);
         } catch (SQLException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
         return resultSet;
     }
+
+    @Override
+    public void createTableFromTextFiles(String tableName, String SchemaString,
+                                         Character fieldDelimiter, Character collDelim,
+                                         Character mapDelim, Character lineDelim, String textFilesDirectory) {
+        String query = String.format("CREATE EXTERNAL TABLE  %s (%s) ROW FORMAT DELIMITED FIELDS TERMINATED BY '%c'" +
+                      " COLLECTION ITEMS TERMINATED BY '%c' MAP KEYS TERMINATED BY '%c' LINES TERMINATED BY '\n'" +
+                      " STORED AS TEXTFILE LOCATION '%s'", tableName, SchemaString, fieldDelimiter, ':', '~', textFilesDirectory);
+        System.out.println("creating " + query);
+        execute(query);
+
+    }
+
+
 
     private Statement getStatement() {
         Statement statement = null;
         try {
             statement = connection.get().createStatement();
         } catch (SQLException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
         return statement;
     }

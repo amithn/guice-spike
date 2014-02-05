@@ -7,11 +7,11 @@ import org.apache.hadoop.fs.Path;
 
 import java.io.IOException;
 
-public class RealHDFSService implements HDFSService {
+public class HDFSServiceImpl implements HDFSService {
     FileSystem fileSystem;
 
     @Inject
-    public RealHDFSService(FileSystem fileSystem) {
+    public HDFSServiceImpl(FileSystem fileSystem) {
         this.fileSystem = fileSystem;
         System.out.println("Home is " + fileSystem.getScheme());
     }
@@ -23,7 +23,7 @@ public class RealHDFSService implements HDFSService {
             //fileSystem.copyToLocalFile(new Path("dep.txt"), new Path("/home/amith/hivedata"));
         } catch (IOException e) {
             System.out.println("Exception is " + e.getMessage());
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
 
     }

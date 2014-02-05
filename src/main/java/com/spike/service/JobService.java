@@ -2,5 +2,5 @@ package com.spike.service;
 
 
 public interface JobService {
-    void run();
+    void run(MapReduceConf conf);
 }
