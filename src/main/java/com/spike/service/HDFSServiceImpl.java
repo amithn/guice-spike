@@ -2,6 +2,7 @@ package com.spike.service;
 
 
 import com.google.inject.Inject;
+import com.spike.logger.Log;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 
@@ -13,10 +14,10 @@ public class HDFSServiceImpl implements HDFSService {
     @Inject
     public HDFSServiceImpl(FileSystem fileSystem) {
         this.fileSystem = fileSystem;
-        System.out.println("Home is " + fileSystem.getScheme());
     }
 
     @Override
+    @Log
     public void copyFileToHDFS(String source, String destination) {
         try {
             fileSystem.copyFromLocalFile(new Path(source), new Path(destination));
@@ -38,6 +39,7 @@ public class HDFSServiceImpl implements HDFSService {
     }
 
     @Override
+    @Log
     public void removeDirectory(String dirPath) {
         try {
             fileSystem.delete(new Path(dirPath), true);

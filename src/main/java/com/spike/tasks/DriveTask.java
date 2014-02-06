@@ -16,6 +16,5 @@ public class DriveTask implements Task {
     @Override
     @Log
     public void execute() {
-        System.out.println("Executing DriveTask " + "[Wrooom ......]");
     }
 }

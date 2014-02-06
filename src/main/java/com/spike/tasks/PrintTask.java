@@ -16,6 +16,5 @@ public class PrintTask implements Task {
     @Override
     @Log
     public void execute() {
-        System.out.println("Executing PrintTask " + "[Hello World]");
     }
 }

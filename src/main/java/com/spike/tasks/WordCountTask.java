@@ -22,7 +22,6 @@ public class WordCountTask implements Task {
 
     @Override
     public void execute() {
-        System.out.println("Executing Word Count Task with hdfs service " + hdfsService.getClass());
     }
 
     public static class Map extends MapReduceBase implements Mapper<LongWritable, Text, Text, IntWritable> {

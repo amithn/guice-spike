@@ -11,6 +11,5 @@ public class TransferTask implements Task {
 
     @Override
     public void execute() {
-        System.out.println("Executing transfer task from HDFS ");
     }
 }

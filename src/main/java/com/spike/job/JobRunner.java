@@ -15,7 +15,6 @@ public class JobRunner {
     public void execute(Job job) {
         for (Class<? extends Task> task : job.getTasks()) {
             Task injectedTask = factory.getInstance(task);
-            System.out.println("Executing task " + injectedTask.getClass().getSimpleName());
             injectedTask.execute();
         }
     }

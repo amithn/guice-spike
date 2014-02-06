@@ -15,7 +15,6 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public void run(MapReduceConf mapReduceConf) {
-        System.out.println("Get info called on " + this.getClass().getSimpleName());
         Configuration config = new Configuration();
         config.addResource(new Path("/etc/hadoop/conf.cloudera.mapreduce1/core-site.xml"));
         config.addResource(new Path("/etc/hadoop/conf.cloudera.mapreduce1/hdfs-site.xml"));

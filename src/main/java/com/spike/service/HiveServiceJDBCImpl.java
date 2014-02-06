@@ -1,6 +1,8 @@
 package com.spike.service;
 
 import com.google.inject.Inject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,6 +11,7 @@ import java.sql.Statement;
 public class HiveServiceJDBCImpl implements HiveService {
 
     HiveConnection connection;
+    Logger logger = LoggerFactory.getLogger(HiveServiceJDBCImpl.class);
 
     @Inject
     public HiveServiceJDBCImpl(HiveConnection connection) {
@@ -22,7 +25,7 @@ public class HiveServiceJDBCImpl implements HiveService {
             statement.execute(query);
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Error is " + e.getMessage());
+            logger.error("Error is " + e.getMessage());
         }
     }
 
@@ -45,7 +48,7 @@ public class HiveServiceJDBCImpl implements HiveService {
         String query = String.format("CREATE EXTERNAL TABLE  %s (%s) ROW FORMAT DELIMITED FIELDS TERMINATED BY '%c'" +
                       " COLLECTION ITEMS TERMINATED BY '%c' MAP KEYS TERMINATED BY '%c' LINES TERMINATED BY '\n'" +
                       " STORED AS TEXTFILE LOCATION '%s'", tableName, SchemaString, fieldDelimiter, ':', '~', textFilesDirectory);
-        System.out.println("creating " + query);
+        logger.info("Creating table " + query);
         execute(query);
 
     }

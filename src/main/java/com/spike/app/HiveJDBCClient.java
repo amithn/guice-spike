@@ -23,7 +23,6 @@ public class HiveJDBCClient {
         Statement stmt = con.createStatement();
 
         String sql = "show tables";
-        System.out.println("Running: " + sql);
         ResultSet res = stmt.executeQuery(sql);
         if (res.next()) {
             System.out.println(res.getString(1));

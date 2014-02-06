@@ -20,7 +20,6 @@ public class CopyTask implements Task {
 
     @Override
     public void execute() {
-        System.out.println("Executing copyTask from local" + Arrays.toString(consoleArgs.get()));
         hdfsService.copyFileToHDFS("/home/cloudera/hivedata/transactions.txt", "trans.txt");
     }
 }
