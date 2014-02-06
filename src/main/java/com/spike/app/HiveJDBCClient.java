@@ -4,7 +4,8 @@ package com.spike.app;
 import java.sql.*;
 
 public class HiveJDBCClient {
-    private static String driverName = "org.apache.hive.jdbc.HiveDriver";
+    private static String hiveServer2driverName = "org.apache.hive.jdbc.HiveDriver";
+    private static String hiveServer1driverName = "org.apache.hadoop.hive.jdbc.HiveDriver";
 
     /**
      * @param args
@@ -12,13 +13,13 @@ public class HiveJDBCClient {
      */
     public static void main(String[] args) throws SQLException {
         try {
-            Class.forName(driverName);
+            Class.forName(hiveServer1driverName);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
             System.exit(1);
         }
         //replace "hive" here with the name of the user the queries should run as
-        Connection con = DriverManager.getConnection("jdbc:hive2://localhost:10000/default", "cloudera", "cloudera");
+        Connection con = DriverManager.getConnection("jdbc:hive://localhost.localdomain:10000/default");
         Statement stmt = con.createStatement();
 
         String sql = "show tables";

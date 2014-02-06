@@ -23,6 +23,7 @@ public class MapReduceConfBuilder {
     String inputDir;
     String outputDir;
     private String jobName;
+    private String pathToJar;
 
     public MapReduceConfBuilder withInputDir(String inputDir) {
         this.inputDir = inputDir;
@@ -74,9 +75,14 @@ public class MapReduceConfBuilder {
         return this;
     }
 
+    public MapReduceConfBuilder withJar(String pathToJar) {
+        this.pathToJar = pathToJar;
+        return this;
+    }
+
     public MapReduceConf build() {
         return new MapReduceConf(mapperClass, reducerClass, inputFormat, outputFormat,
                                 outputKeyClass, outputValueClass, currentClass,
-                                inputDir, outputDir, jobName);
+                                inputDir, outputDir, pathToJar, jobName);
     }
 }

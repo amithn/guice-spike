@@ -28,5 +28,24 @@ public class HDFSServiceImpl implements HDFSService {
 
     }
 
+    @Override
+    public void removeFile(String filePath) {
+        try {
+            fileSystem.delete(new Path(filePath), false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void removeDirectory(String dirPath) {
+        try {
+            fileSystem.delete(new Path(dirPath), true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 }

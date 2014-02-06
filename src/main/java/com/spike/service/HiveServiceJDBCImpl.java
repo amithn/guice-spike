@@ -50,8 +50,6 @@ public class HiveServiceJDBCImpl implements HiveService {
 
     }
 
-
-
     private Statement getStatement() {
         Statement statement = null;
         try {

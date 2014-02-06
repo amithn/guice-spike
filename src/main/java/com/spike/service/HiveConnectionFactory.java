@@ -10,7 +10,8 @@ import java.sql.SQLException;
  */
 public class HiveConnectionFactory {
 
-    private static String driverName = "org.apache.hive.jdbc.HiveDriver";
+    //private static String driverName = "org.apache.hive.jdbc.HiveDriver";
+    private static String driverName = "org.apache.hadoop.hive.jdbc.HiveDriver";
 
     static {
         try {
@@ -23,7 +24,7 @@ public class HiveConnectionFactory {
     public static HiveConnection createNew() {
         Connection con = null;
         try {
-            con = DriverManager.getConnection("jdbc:hive2://localhost:10000/default", "cloudera", "cloudera");
+            con = DriverManager.getConnection("jdbc:hive://localhost:10000/default", "cloudera", "cloudera");
         } catch (SQLException e) {
             e.printStackTrace();
         }
