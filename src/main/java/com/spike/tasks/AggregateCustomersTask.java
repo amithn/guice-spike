@@ -3,15 +3,16 @@ package com.spike.tasks;
 import com.spike.logger.Log;
 import com.spike.mapreduce.CustomerMapper;
 import com.spike.mapreduce.CustomerReducer;
-import com.spike.service.*;
+import com.spike.service.HDFSService;
+import com.spike.service.JobService;
+import com.spike.service.MapReduceConf;
+import com.spike.service.MapReduceConfBuilder;
 import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.TextInputFormat;
 import org.apache.hadoop.mapred.TextOutputFormat;
 
 import javax.inject.Inject;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  * Author: Amith Nambiar<amith.nmbr@gmail.com>
@@ -21,13 +22,11 @@ public class AggregateCustomersTask implements Task {
 
     private final JobService jobService;
     private final HDFSService hdfsService;
-    private HiveService hiveService;
 
     @Inject
-    public AggregateCustomersTask(HDFSService hdfsService, JobService jobService, HiveService hiveService) {
+    public AggregateCustomersTask(HDFSService hdfsService, JobService jobService) {
         this.hdfsService = hdfsService;
         this.jobService = jobService;
-        this.hiveService = hiveService;
     }
 
     @Override
@@ -38,18 +37,6 @@ public class AggregateCustomersTask implements Task {
 
         MapReduceConf mapReduceConfig = createMapReduceConfig();
         jobService.run(mapReduceConfig);
-
-
-        hiveService.execute("drop table customers");
-        hiveService.createTableFromTextFiles("customers", "id INT, name String", ',', ':', '~', '-', "/user/cloudera/customer/input");
-
-        ResultSet resultSet = hiveService.executeQuery("show tables");
-        try {
-            while (resultSet.next()) {
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     private MapReduceConf createMapReduceConfig() {

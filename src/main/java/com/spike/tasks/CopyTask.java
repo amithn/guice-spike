@@ -4,8 +4,6 @@ import com.google.inject.Inject;
 import com.spike.service.HDFSService;
 import com.spike.util.Arguments;
 
-import java.util.Arrays;
-
 public class CopyTask implements Task {
 
     private HDFSService hdfsService;

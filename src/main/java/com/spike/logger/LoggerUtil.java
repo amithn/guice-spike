@@ -1,7 +1,5 @@
 package com.spike.logger;
 
-import java.util.Arrays;
-
 public class LoggerUtil {
 
     public static String getClassname(String fqname) {

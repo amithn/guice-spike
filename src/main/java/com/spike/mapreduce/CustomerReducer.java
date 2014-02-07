@@ -1,7 +1,6 @@
 package com.spike.mapreduce;
 
 import org.apache.hadoop.io.FloatWritable;
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.MapReduceBase;
 import org.apache.hadoop.mapred.OutputCollector;
@@ -18,11 +17,11 @@ import java.util.Iterator;
 public class CustomerReducer extends MapReduceBase implements Reducer<Text, FloatWritable, Text, FloatWritable> {
 
     @Override
-    public void reduce(Text name, Iterator<FloatWritable> values, OutputCollector<Text, FloatWritable> output, Reporter reporter) throws IOException {
+    public void reduce(Text id, Iterator<FloatWritable> values, OutputCollector<Text, FloatWritable> output, Reporter reporter) throws IOException {
         float total = 0;
         while (values.hasNext()) {
             total  = total + values.next().get();
         }
-        output.collect(name, new FloatWritable(total));
+        output.collect(id, new FloatWritable(total));
     }
 }

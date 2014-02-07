@@ -1,10 +1,13 @@
 package com.spike.mapreduce;
 
+import com.spike.logger.Log;
 import org.apache.hadoop.io.FloatWritable;
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
-import org.apache.hadoop.mapred.*;
+import org.apache.hadoop.mapred.MapReduceBase;
+import org.apache.hadoop.mapred.Mapper;
+import org.apache.hadoop.mapred.OutputCollector;
+import org.apache.hadoop.mapred.Reporter;
 
 import java.io.IOException;
 import java.util.StringTokenizer;
@@ -24,7 +27,6 @@ public class CustomerMapper extends MapReduceBase implements Mapper<LongWritable
         String customerId = tokenizer.nextToken();
         String customerName = tokenizer.nextToken();
         String amount = tokenizer.nextToken();
-
-        output.collect(new Text(customerName), new FloatWritable(Float.valueOf(amount)));
+        output.collect(new Text(customerId), new FloatWritable(Float.valueOf(amount)));
     }
 }
