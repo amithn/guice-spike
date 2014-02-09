@@ -5,6 +5,7 @@ import com.google.inject.Module;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.inject.name.Names;
+import com.mongodb.MongoClient;
 import com.spike.service.*;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -12,6 +13,7 @@ import org.apache.hadoop.fs.FileSystem;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.UnknownHostException;
 
 
 public class ServiceConfig implements Module {
@@ -46,6 +48,20 @@ public class ServiceConfig implements Module {
         }
         return fs;
     }
+
+    @Provides
+    @Singleton
+    public MongoClient mongoClient() {
+        MongoClient mongoClient = null;
+        try {
+            mongoClient = new MongoClient("localhost");
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+        return mongoClient;
+    }
+
+
 //
 //	@Provides
 //    @Singleton

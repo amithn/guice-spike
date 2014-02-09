@@ -27,6 +27,6 @@ public class CustomerMapper extends MapReduceBase implements Mapper<LongWritable
         String customerId = tokenizer.nextToken();
         String customerName = tokenizer.nextToken();
         String amount = tokenizer.nextToken();
-        output.collect(new Text(customerId), new FloatWritable(Float.valueOf(amount)));
+        output.collect(new Text(customerName), new FloatWritable(Float.valueOf(amount)));
     }
 }
