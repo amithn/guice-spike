@@ -2,6 +2,7 @@ package com.spike.job;
 
 import com.google.inject.Inject;
 import com.mongodb.BasicDBObject;
+import com.spike.logger.LoggerUtil;
 import com.spike.service.MongoLoggingService;
 import com.spike.tasks.Task;
 import com.spike.util.GuiceTaskFactory;
@@ -25,7 +26,7 @@ public class JobRunner {
         for (Class<? extends Task> task : job.getTasks()) {
             Task injectedTask = factory.getTask(task);
             injectedTask.execute();
-            doc = new BasicDBObject("name", "ZanadaJob").
+            doc = new BasicDBObject("name", task.getSimpleName()).
                     append("type", "ETL").
                     append("time", new Date());
             loggingService.logJobMessage(doc);
