@@ -10,20 +10,18 @@ import com.mongodb.MongoClient;
  * Author: Amith Nambiar<amith.nmbr@gmail.com>
  * Date: 2/9/14
  */
-public class MongoLoggingService {
+public class MongoService {
     DB hitwiseDB;
     private final MongoClient mongo;
 
     @Inject
-    public MongoLoggingService(MongoClient mongo) {
+    public MongoService(MongoClient mongo) {
         this.mongo = mongo;
         this.hitwiseDB = mongo.getDB("hitwise");
     }
 
-    public void logJobMessage(BasicDBObject log) {
-        DBCollection collection = hitwiseDB.getCollection("logs");
-        collection.insert(log);
+    public void insert(String collectionName, BasicDBObject record) {
+        DBCollection collection = hitwiseDB.getCollection("ci");
+        collection.insert(record);
     }
-
-
 }

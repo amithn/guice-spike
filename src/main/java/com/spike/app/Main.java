@@ -3,6 +3,7 @@ package com.spike.app;
 
 import com.spike.job.Job;
 import com.spike.job.JobBuilder;
+import com.spike.service.MongoDBTableLoadeTask;
 import com.spike.tasks.AggregateCustomersTask;
 import com.spike.tasks.JoinCustomersHiveTask;
 import com.spike.util.GuiceTaskFactory;
@@ -18,6 +19,7 @@ public class Main {
         Job canadaJob = new JobBuilder()
                 .addTask(AggregateCustomersTask.class)
                 .addTask(JoinCustomersHiveTask.class)
+                .addTask(MongoDBTableLoadeTask.class)
                 .build();
 
         app.run(canadaJob);
