@@ -22,7 +22,7 @@ public class MongoClientTest {
         DB db = mongoClient.getDB("hitwise");
         DBCollection jobsColl = db.getCollection("messages");
 
-        BasicDBObject doc = new BasicDBObject("name", "ZanadaJob").
+        BasicDBObject doc = new BasicDBObject("name", "CanadaJob").
                 append("type", "ETL").
                 append("time", new Date());
 

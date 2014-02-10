@@ -1,7 +1,7 @@
 package com.spike.job;
 
 import com.google.inject.Inject;
-import com.mongodb.BasicDBObject;
+import com.spike.logger.Timed;
 import com.spike.tasks.Task;
 import com.spike.util.GuiceTaskFactory;
 
@@ -15,8 +15,6 @@ public class JobRunner {
     }
 
     public void execute(Job job) {
-        BasicDBObject doc;
-
         for (Class<? extends Task> task : job.getTasks()) {
             Task injectedTask = factory.getTask(task);
             injectedTask.execute();

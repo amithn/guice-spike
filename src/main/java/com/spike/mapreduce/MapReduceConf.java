@@ -1,4 +1,4 @@
-package com.spike.service;
+package com.spike.mapreduce;
 
 import org.apache.hadoop.mapred.InputFormat;
 import org.apache.hadoop.mapred.Mapper;

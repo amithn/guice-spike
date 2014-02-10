@@ -5,7 +5,7 @@ import org.aopalliance.intercept.MethodInvocation;
 import org.slf4j.LoggerFactory;
 
 
-public class LoggingInterceptor implements MethodInterceptor {
+public class MeasureTimeInterceptor implements MethodInterceptor {
     org.slf4j.Logger logger = LoggerFactory.getLogger("LOG");
 
     @Override

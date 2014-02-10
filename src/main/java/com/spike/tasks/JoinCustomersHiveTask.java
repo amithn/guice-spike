@@ -2,7 +2,7 @@ package com.spike.tasks;
 
 
 import com.google.inject.Inject;
-import com.spike.logger.Log;
+import com.spike.logger.Timed;
 import com.spike.service.HiveService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +20,7 @@ public class JoinCustomersHiveTask implements Task {
         this.hiveService = hiveService;
     }
 
-    @Log
+    @Timed
     @Override
     public void execute() {
         hiveService.execute("drop table customers");

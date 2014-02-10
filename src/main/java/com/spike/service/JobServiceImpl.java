@@ -1,6 +1,8 @@
 package com.spike.service;
 
 
+import com.google.inject.Inject;
+import com.spike.mapreduce.MapReduceConf;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.mapred.*;
@@ -9,17 +11,15 @@ import java.io.IOException;
 
 public class JobServiceImpl implements JobService {
 
-    public JobServiceImpl() {
+    private final Configuration config;
+
+    @Inject
+    public JobServiceImpl(Configuration config) {
+        this.config = config;
     }
 
     @Override
     public void run(MapReduceConf mapReduceConf) {
-        Configuration config = new Configuration();
-        config.addResource(new Path("/etc/hadoop/conf.cloudera.mapreduce1/core-site.xml"));
-        config.addResource(new Path("/etc/hadoop/conf.cloudera.mapreduce1/hdfs-site.xml"));
-        config.addResource(new Path("/etc/hadoop/conf.cloudera.mapreduce1/mapred-site.xml"));
-
-
         JobConf conf = new JobConf(config, mapReduceConf.getCurrentClass());
         conf.setJobName(mapReduceConf.getJobName());
 

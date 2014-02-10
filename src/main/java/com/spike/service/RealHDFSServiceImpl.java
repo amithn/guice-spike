@@ -2,22 +2,22 @@ package com.spike.service;
 
 
 import com.google.inject.Inject;
-import com.spike.logger.Log;
+import com.spike.logger.Timed;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 
 import java.io.IOException;
 
-public class HDFSServiceImpl implements HDFSService {
+public class RealHDFSServiceImpl implements HDFSService {
     FileSystem fileSystem;
 
     @Inject
-    public HDFSServiceImpl(FileSystem fileSystem) {
+    public RealHDFSServiceImpl(FileSystem fileSystem) {
         this.fileSystem = fileSystem;
     }
 
     @Override
-    @Log
+    @Timed
     public void copyFileToHDFS(String source, String destination) {
         try {
             fileSystem.copyFromLocalFile(new Path(source), new Path(destination));
@@ -39,7 +39,7 @@ public class HDFSServiceImpl implements HDFSService {
     }
 
     @Override
-    @Log
+    @Timed
     public void removeDirectory(String dirPath) {
         try {
             fileSystem.delete(new Path(dirPath), true);

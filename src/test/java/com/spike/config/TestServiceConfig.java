@@ -9,7 +9,6 @@ import com.mongodb.MongoClient;
 import com.spike.service.*;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.fs.Path;
 
 import javax.inject.Named;
 import java.io.IOException;
@@ -18,14 +17,14 @@ import java.net.URISyntaxException;
 import java.net.UnknownHostException;
 
 
-public class ServiceConfig implements Module {
+public class TestServiceConfig implements Module {
 
     @Override
     public void configure(Binder binder) {
-        binder.bind(String.class).annotatedWith(Names.named("HDFSURI")).toInstance("hdfs://localhost.localdomain:8020");
+        binder.bind(String.class).annotatedWith(Names.named("HDFSURI")).toInstance("file://home/amith");
         binder.bind(String.class).annotatedWith(Names.named("MONGOHOST")).toInstance("localhost");
 
-        binder.bind(HDFSService.class).to(RealHDFSServiceImpl.class);
+        binder.bind(HDFSService.class).to(FakeHDFSServiceImpl.class);
         binder.bind(JobService.class).to(JobServiceImpl.class);
         binder.bind(HiveConnection.class).toInstance(HiveConnectionFactory.createNew());
         binder.bind(HiveService.class).to(HiveServiceJDBCImpl.class);
@@ -34,9 +33,6 @@ public class ServiceConfig implements Module {
     @Provides
     public Configuration configuration() {
         Configuration config = new Configuration();
-        config.addResource(new Path("/etc/hadoop/conf.cloudera.mapreduce1/core-site.xml"));
-        config.addResource(new Path("/etc/hadoop/conf.cloudera.mapreduce1/hdfs-site.xml"));
-        config.addResource(new Path("/etc/hadoop/conf.cloudera.mapreduce1/mapred-site.xml"));
         return config;
     }
 

@@ -6,14 +6,6 @@ import com.google.inject.Module;
 
 public class JobConfig implements Module {
 
-    private final ServiceConfig serviceConfig;
-
-    @Inject
-    public JobConfig(ServiceConfig serviceConfig) {
-        this.serviceConfig = serviceConfig;
-
-    }
-
     @Override
     public void configure(Binder binder) {
     }
