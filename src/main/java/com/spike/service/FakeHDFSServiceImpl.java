@@ -38,15 +38,15 @@ public class FakeHDFSServiceImpl implements HDFSService {
     }
 
     @Override
-    @Timed
     public void removeDirectory(String dirPath) {
         try {
             fileSystem.delete(new Path(dirPath), true);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
+
+
 
 
 }

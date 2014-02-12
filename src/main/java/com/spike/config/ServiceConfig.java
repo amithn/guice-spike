@@ -26,6 +26,7 @@ public class ServiceConfig implements Module {
         binder.bind(String.class).annotatedWith(Names.named("MONGOHOST")).toInstance("localhost");
 
         binder.bind(HDFSService.class).to(RealHDFSServiceImpl.class);
+        binder.bind(HDFSService.class).annotatedWith(FakeHDFS.class).to(FakeHDFSServiceImpl.class);
         binder.bind(JobService.class).to(JobServiceImpl.class);
         binder.bind(HiveConnection.class).toInstance(HiveConnectionFactory.createNew());
         binder.bind(HiveService.class).to(HiveServiceJDBCImpl.class);

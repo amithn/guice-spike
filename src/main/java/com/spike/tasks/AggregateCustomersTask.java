@@ -2,6 +2,7 @@ package com.spike.tasks;
 
 import com.spike.logger.Timed;
 import com.spike.mapreduce.*;
+import com.spike.service.FakeHDFS;
 import com.spike.service.HDFSService;
 import com.spike.service.JobService;
 import org.apache.hadoop.io.FloatWritable;
@@ -46,5 +47,10 @@ public class AggregateCustomersTask implements Task {
                                        .withOutputValueClass(FloatWritable.class)
                                        .withCurrentClass(this.getClass())
                                        .build();
+    }
+
+    @Inject
+    public void setHDFSService(@FakeHDFS HDFSService service) {
+        System.out.println("Service name is " + service.getClass().getSimpleName());
     }
 }
