@@ -3,6 +3,7 @@ package com.spike.service;
 
 import com.google.inject.Inject;
 import com.spike.mapreduce.MapReduceConf;
+import com.spike.util.Arguments;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.mapred.*;

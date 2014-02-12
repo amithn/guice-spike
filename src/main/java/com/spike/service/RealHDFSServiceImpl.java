@@ -26,7 +26,6 @@ public class RealHDFSServiceImpl implements HDFSService {
             System.out.println("Exception is " + e.getMessage());
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -46,7 +45,6 @@ public class RealHDFSServiceImpl implements HDFSService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
 

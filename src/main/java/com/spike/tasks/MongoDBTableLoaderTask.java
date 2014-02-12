@@ -1,7 +1,9 @@
-package com.spike.service;
+package com.spike.tasks;
 
 import com.google.inject.Inject;
 import com.mongodb.BasicDBObject;
+import com.spike.service.HiveService;
+import com.spike.service.MongoService;
 import com.spike.tasks.Task;
 
 import java.sql.ResultSet;

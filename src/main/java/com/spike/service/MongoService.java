@@ -21,7 +21,7 @@ public class MongoService {
     }
 
     public void insert(String collectionName, BasicDBObject record) {
-        DBCollection collection = hitwiseDB.getCollection("ci");
+        DBCollection collection = hitwiseDB.getCollection(collectionName);
         collection.insert(record);
     }
 }

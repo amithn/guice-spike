@@ -7,9 +7,6 @@ import com.spike.service.HiveService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 public class JoinCustomersHiveTask implements Task {
 
     private final HiveService hiveService;
@@ -24,15 +21,6 @@ public class JoinCustomersHiveTask implements Task {
     @Override
     public void execute() {
         hiveService.execute("drop table customers");
-        hiveService.createTableFromTextFiles("customers", "name STRING, amount FLOAT", ',', ':', '~', '-', "/user/cloudera/customer/output");
-
-        ResultSet resultSet = hiveService.executeQuery("show tables");
-        try {
-            while (resultSet.next()) {
-                logger.info("table name is " + resultSet.getString(1));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        hiveService.createTableFromTextFiles("customers", "id STRING, amount FLOAT", ',', ':', '~', '-', "/user/cloudera/customer/output");
     }
 }

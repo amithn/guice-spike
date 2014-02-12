@@ -22,6 +22,4 @@ public class MeasureTimeInterceptor implements MethodInterceptor {
                                                                         (endTime - startTime) + " milliseconds ");
         return null;
     }
-
-
 }
