@@ -29,9 +29,6 @@ public class WordCountTask implements Task {
         private Text word = new Text();
 
         public void map(LongWritable key, Text value, OutputCollector<Text, IntWritable> output, Reporter reporter) throws IOException {
-            FileSplit fileSplit = (FileSplit) reporter.getInputSplit();
-            String filename = fileSplit.getPath().getName();
-
             String line = value.toString();
             StringTokenizer tokenizer = new StringTokenizer(line);
             while (tokenizer.hasMoreTokens()) {
@@ -44,10 +41,8 @@ public class WordCountTask implements Task {
     public static class Reduce extends MapReduceBase implements Reducer<Text, IntWritable, Text, IntWritable> {
         public void reduce(Text key, Iterator<IntWritable> values, OutputCollector<Text, IntWritable> output, Reporter reporter) throws IOException {
             int sum = 0;
-            System.out.print("Got the following values for key " + key.toString() + ":");
             while (values.hasNext()) {
                 int value = values.next().get();
-                System.out.print(value + ",");
                 sum = sum + value;
             }
             output.collect(key, new IntWritable(sum));

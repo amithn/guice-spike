@@ -14,6 +14,7 @@ public class JobRunner {
         this.factory = factory;
     }
 
+    @Timed
     public void execute(Job job) {
         for (Class<? extends Task> task : job.getTasks()) {
             Task injectedTask = factory.getTask(task);

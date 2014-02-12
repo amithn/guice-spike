@@ -24,4 +24,8 @@ public class MongoService {
         DBCollection collection = hitwiseDB.getCollection(collectionName);
         collection.insert(record);
     }
+
+    public void removeCollection(final String collection) {
+        hitwiseDB.getCollection(collection).drop();
+    }
 }

@@ -15,7 +15,7 @@ import java.util.StringTokenizer;
  * Author: Amith Nambiar<amith.nmbr@gmail.com>
  * Date: 2/5/14
  */
-public class CustomerMapper extends MapReduceBase implements Mapper<LongWritable, Text, Text, FloatWritable> {
+public class AggregateCustomerMapper extends MapReduceBase implements Mapper<LongWritable, Text, Text, FloatWritable> {
 
     @Override
     public void map(LongWritable lineNumber, Text line, OutputCollector<Text, FloatWritable> output, Reporter reporter) throws IOException {

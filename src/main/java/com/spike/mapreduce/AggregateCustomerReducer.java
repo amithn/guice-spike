@@ -15,7 +15,7 @@ import java.util.Iterator;
  * Author: Amith Nambiar<amith.nmbr@gmail.com>
  * Date: 2/5/14
  */
-public class CustomerReducer extends MapReduceBase implements Reducer<Text, FloatWritable, Text, NullWritable> {
+public class AggregateCustomerReducer extends MapReduceBase implements Reducer<Text, FloatWritable, Text, NullWritable> {
 
     @Override
     public void reduce(Text id, Iterator<FloatWritable> values, OutputCollector<Text, NullWritable> output, Reporter reporter) throws IOException {

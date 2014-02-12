@@ -1,6 +1,7 @@
 package com.spike.service;
 
 import com.google.inject.Inject;
+import com.spike.logger.Timed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,6 +30,7 @@ public class HiveServiceJDBCImpl implements HiveService {
         }
     }
 
+    @Timed
     @Override
     public ResultSet executeQuery(String query) {
         ResultSet resultSet = null;

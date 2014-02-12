@@ -21,6 +21,6 @@ public class JoinCustomersHiveTask implements Task {
     @Override
     public void execute() {
         hiveService.execute("drop table customers");
-        hiveService.createTableFromTextFiles("customers", "id STRING, amount FLOAT", ',', ':', '~', '-', "/user/cloudera/customer/output");
+        hiveService.createTableFromTextFiles("customers", "name STRING, amount FLOAT", ',', ':', '~', '-', "/user/cloudera/customer/output");
     }
 }

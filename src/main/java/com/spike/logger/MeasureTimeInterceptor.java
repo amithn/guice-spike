@@ -14,12 +14,12 @@ public class MeasureTimeInterceptor implements MethodInterceptor {
                 LoggerUtil.getClassname(invocation.getMethod().toString()));
 
         long startTime = System.currentTimeMillis();
-        invocation.proceed();
+        Object returnValue = invocation.proceed();
         long endTime = System.currentTimeMillis();
 
         logger.info("Finished executing [" + invocation.getMethod().getName() +
                 "()] on " + LoggerUtil.getClassname(invocation.getMethod().toString()) + " in " +
                                                                         (endTime - startTime) + " milliseconds ");
-        return null;
+        return returnValue;
     }
 }

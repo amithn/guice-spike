@@ -2,8 +2,8 @@ package com.spike.util;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.spike.config.AppConfig;
 import com.spike.config.InterceptorConfig;
+import com.spike.config.AppConfig;
 import com.spike.config.ServiceConfig;
 import com.spike.tasks.Task;
 
