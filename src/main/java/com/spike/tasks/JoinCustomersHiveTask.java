@@ -4,6 +4,7 @@ package com.spike.tasks;
 import com.google.inject.Inject;
 import com.spike.logger.Timed;
 import com.spike.service.HiveService;
+import com.spike.service.JobService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,7 +14,7 @@ public class JoinCustomersHiveTask implements Task {
     Logger logger = LoggerFactory.getLogger(JoinCustomersHiveTask.class);
 
     @Inject
-    public JoinCustomersHiveTask(HiveService hiveService) {
+    public JoinCustomersHiveTask(HiveService hiveService    ) {
         this.hiveService = hiveService;
     }
 

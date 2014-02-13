@@ -45,8 +45,4 @@ public class FakeHDFSServiceImpl implements HDFSService {
             e.printStackTrace();
         }
     }
-
-
-
-
 }

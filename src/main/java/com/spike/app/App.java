@@ -21,6 +21,4 @@ public class App {
     public void run(Job job) {
         jobRunner.execute(job);
     }
-
-
 }
