@@ -15,6 +15,7 @@ import com.yammer.dropwizard.config.Environment;
  */
 public class SSDAService extends Service<SSDAConfiguration> {
     public static void main(String[] args) throws Exception {
+        System.out.println("Starting SSDA Service");
         new SSDAService().run(args);
     }
 
@@ -32,11 +33,15 @@ public class SSDAService extends Service<SSDAConfiguration> {
                 .build();
 
         bootstrap.addBundle(guiceBundle);
+        System.out.println("Leaving initialize()");
     }
 
     @Override
     public void run(SSDAConfiguration configuration,
                     Environment environment) {
-        // nothing to do yet
+        System.out.println("Inside run()");
+        final String template = configuration.getTemplate();
+        final String defaultName = configuration.getDefaultName();
+        environment.addResource(new SSDAResource(template, defaultName));
     }
 }

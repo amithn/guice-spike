@@ -22,6 +22,7 @@ public class ServiceConfig implements Module {
 
     @Override
     public void configure(Binder binder) {
+        System.out.println("Configuring services in Service Config");
         binder.bind(String.class).annotatedWith(Names.named("HDFSURI")).toInstance("hdfs://localhost.localdomain:8020");
         binder.bind(String.class).annotatedWith(Names.named("MONGOHOST")).toInstance("localhost");
 
