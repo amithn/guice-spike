@@ -21,7 +21,8 @@ public class SSDAService extends Service<SSDAConfiguration> {
 
     @Override
     public void initialize(Bootstrap<SSDAConfiguration> bootstrap) {
-        bootstrap.setName("hello-world");
+        bootstrap.setName("ssda");
+        System.out.println("Inititalizing .. started");
 
         GuiceBundle<SSDAConfiguration> guiceBundle = GuiceBundle.<SSDAConfiguration>newBuilder()
                 .addModule(new ServiceConfig())
@@ -42,6 +43,6 @@ public class SSDAService extends Service<SSDAConfiguration> {
         System.out.println("Inside run()");
         final String template = configuration.getTemplate();
         final String defaultName = configuration.getDefaultName();
-        environment.addResource(new SSDAResource(template, defaultName));
+        //environment.addResource(new SSDAResource(template, defaultName));
     }
 }

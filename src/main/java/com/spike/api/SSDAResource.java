@@ -1,6 +1,8 @@
 package com.spike.api;
 
 import com.google.common.base.Optional;
+import com.google.inject.Inject;
+import com.spike.service.JobService;
 import com.yammer.metrics.annotation.Timed;
 
 import javax.ws.rs.GET;
@@ -13,21 +15,16 @@ import java.util.concurrent.atomic.AtomicLong;
 @Path("/hello-world")
 @Produces(MediaType.APPLICATION_JSON)
 public class SSDAResource {
-    private final String template;
-    private final String defaultName;
-    private final AtomicLong counter;
 
-    public SSDAResource(String template, String defaultName) {
-        this.template = template;
-        this.defaultName = defaultName;
-        this.counter = new AtomicLong();
-    }
+    @Inject
+    private JobService jobService;
 
     @GET
     @Timed
     public Saying sayHello(@QueryParam("name") Optional<String> name) {
-        return new Saying(counter.incrementAndGet(),
-                String.format(template, name.or(defaultName)));
+        System.out.println("jobService is " + jobService.getClass().getSimpleName());
+        return new Saying(1,
+                String.format("Hello %s", name.or("Stranger")));
     }
 }
 
