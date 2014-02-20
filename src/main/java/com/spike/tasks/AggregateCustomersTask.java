@@ -41,7 +41,7 @@ public class AggregateCustomersTask implements Task {
                                        .withOutputFormat(TextOutputFormat.class)
                                        .withInputDir("customer/input")
                                        .withOutputDir("customer/output")
-                                       .withJar("/home/cloudera/testbed/guicespike/build/libs/guicespike-1.0.jar")
+                                       .withJar("/home/cloudera/testbed/guice-spike/build/libs/guice-spike-1.0.jar")
                                        .withOutputKeyClass(Text.class)
                                        .withOutputValueClass(FloatWritable.class)
                                        .withCurrentClass(this.getClass())

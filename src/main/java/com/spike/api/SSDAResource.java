@@ -2,7 +2,13 @@ package com.spike.api;
 
 import com.google.common.base.Optional;
 import com.google.inject.Inject;
+import com.spike.job.Job;
+import com.spike.job.JobBuilder;
+import com.spike.job.JobRunner;
 import com.spike.service.JobService;
+import com.spike.tasks.AggregateCustomersTask;
+import com.spike.tasks.JoinCustomersHiveTask;
+import com.spike.tasks.MongoDBTableLoaderTask;
 import com.yammer.metrics.annotation.Timed;
 
 import javax.ws.rs.GET;
@@ -16,13 +22,24 @@ import java.util.concurrent.atomic.AtomicLong;
 @Produces(MediaType.APPLICATION_JSON)
 public class SSDAResource {
 
+    private final JobRunner jobRunner;
+
     @Inject
-    private JobService jobService;
+    public SSDAResource(JobRunner jobRunner) {
+        this.jobRunner = jobRunner;
+    }
 
     @GET
     @Timed
     public Saying sayHello(@QueryParam("name") Optional<String> name) {
-        System.out.println("jobService is " + jobService.getClass().getSimpleName());
+        Job custAggrJob = new JobBuilder()
+                .addTask(AggregateCustomersTask.class)
+                .addTask(JoinCustomersHiveTask.class)
+                .addTask(MongoDBTableLoaderTask.class)
+                .build();
+
+        jobRunner.execute(custAggrJob);
+
         return new Saying(1,
                 String.format("Hello %s", name.or("Stranger")));
     }
