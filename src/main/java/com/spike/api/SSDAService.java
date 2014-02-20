@@ -1,6 +1,7 @@
 package com.spike.api;
 
 import com.hubspot.dropwizard.guice.GuiceBundle;
+import com.spike.checks.DatabaseHealthCheck;
 import com.spike.config.AppConfig;
 import com.spike.config.InterceptorConfig;
 import com.spike.config.JobConfig;
@@ -40,9 +41,6 @@ public class SSDAService extends Service<SSDAConfiguration> {
     @Override
     public void run(SSDAConfiguration configuration,
                     Environment environment) {
-        System.out.println("Inside run()");
-        final String template = configuration.getTemplate();
-        final String defaultName = configuration.getDefaultName();
-        //environment.addResource(new SSDAResource(template, defaultName));
+        environment.addHealthCheck(new DatabaseHealthCheck());
     }
 }
