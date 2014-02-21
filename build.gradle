@@ -76,7 +76,7 @@ jar {
     doFirst {
         from (configurations.runtime.resolve().collect {
 
-                                                         if(it.toString().contains("log4j-over-slf4j-1.7.4.jar")) {
+                                                         if(it.toString().contains("log4j-over-slf4j-1.7.4.jar") || it.toString().contains("servlet-api")) {
                                                              println('Not Adding ' + it.toString())
                                                              return false
                                                          } else {
