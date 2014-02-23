@@ -1,0 +1,14 @@
+package com.ssda.util;
+
+
+public class ConsoleArguments implements Arguments {
+    String[] args;
+
+    public ConsoleArguments(String[] args) {
+        this.args = args;
+    }
+
+    public String[] get() {
+        return args;
+    }
+}
