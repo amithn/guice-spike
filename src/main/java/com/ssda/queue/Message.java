@@ -1,9 +1,5 @@
 package com.ssda.queue;
 
-/**
- * Author: Amith Nambiar<amith.nmbr@gmail.com>
- * Date: 2/21/14
- */
 public class Message {
     private String id;
 

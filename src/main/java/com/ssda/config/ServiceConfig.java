@@ -6,8 +6,6 @@ import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.inject.name.Names;
 import com.mongodb.MongoClient;
-import com.ssda.queue.MessageQueueService;
-import com.ssda.queue.Queue;
 import com.ssda.service.*;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
