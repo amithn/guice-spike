@@ -20,7 +20,7 @@ public class JoinCustomersHiveTask implements Task {
     @Timed
     @Override
     public void execute() {
-        hiveService.execute("drop table customers");
+        hiveService.execute("drop table if exists customers");
         hiveService.createTableFromTextFiles("customers", "name STRING, amount FLOAT", ',', ':', '~', '-', "/user/cloudera/customer/output");
     }
 }
