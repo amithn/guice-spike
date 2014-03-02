@@ -43,18 +43,6 @@ public class HiveServiceJDBCImpl implements HiveService {
         return resultSet;
     }
 
-    @Override
-    public void createTableFromTextFiles(String tableName, String SchemaString,
-                                         Character fieldDelimiter, Character collDelim,
-                                         Character mapDelim, Character lineDelim, String textFilesDirectory) {
-        String query = String.format("CREATE EXTERNAL TABLE  %s (%s) ROW FORMAT DELIMITED FIELDS TERMINATED BY '%c'" +
-                      " COLLECTION ITEMS TERMINATED BY '%c' MAP KEYS TERMINATED BY '%c' LINES TERMINATED BY '\n'" +
-                      " STORED AS TEXTFILE LOCATION '%s'", tableName, SchemaString, fieldDelimiter, ':', '~', textFilesDirectory);
-        logger.info("Creating table " + query);
-        execute(query);
-
-    }
-
     private Statement getStatement() {
         Statement statement = null;
         try {
@@ -64,4 +52,27 @@ public class HiveServiceJDBCImpl implements HiveService {
         }
         return statement;
     }
+
+    @Override
+    public void createTableFromTextFiles(String tableName, String SchemaString,
+                                         Character fieldDelimiter, Character collDelim,
+                                         Character mapDelim, Character lineDelim, String textFilesDirectory) {
+        String query = String.format("CREATE EXTERNAL TABLE  %s (%s) ROW FORMAT DELIMITED FIELDS TERMINATED BY '%c'" +
+                " STORED AS TEXTFILE LOCATION '%s'", tableName, SchemaString, fieldDelimiter, textFilesDirectory);
+        logger.info("Creating table " + query);
+        execute(query);
+
+    }
+
+//    @Override
+//    public void createTableFromTextFiles(String tableName, String SchemaString,
+//                                         Character fieldDelimiter, Character collDelim,
+//                                         Character mapDelim, Character lineDelim, String textFilesDirectory) {
+//        String query = String.format("CREATE EXTERNAL TABLE  %s (%s) ROW FORMAT DELIMITED FIELDS TERMINATED BY '%c'" +
+//                " COLLECTION ITEMS TERMINATED BY '%c' MAP KEYS TERMINATED BY '%c' LINES TERMINATED BY '\n'" +
+//                " STORED AS TEXTFILE LOCATION '%s'", tableName, SchemaString, fieldDelimiter, ':', '~', textFilesDirectory);
+//        logger.info("Creating table " + query);
+//        execute(query);
+//
+//    }
 }

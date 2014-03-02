@@ -25,7 +25,7 @@ public class MongoDBTableLoaderTask implements Task {
 
     @Override
     public void execute() {
-        ResultSet resultSet = hiveService.executeQuery("SELECT name, amount FROM customers ORDER BY amount ASC");
+        ResultSet resultSet = hiveService.executeQuery("SELECT name, amount FROM customers ORDER BY amount ASC LIMIT 10");
         mongoService.removeCollection("customers");
         try {
             while(resultSet.next()) {
