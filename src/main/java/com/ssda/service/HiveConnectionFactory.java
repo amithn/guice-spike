@@ -4,10 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- * Author: Amith Nambiar<amith.nmbr@gmail.com>
- * Date: 2/2/14
- */
+
 public class HiveConnectionFactory {
 
     private static String driverName = "org.apache.hive.jdbc.HiveDriver";

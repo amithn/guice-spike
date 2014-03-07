@@ -46,7 +46,6 @@
     <orderEntry type="library" exported="" name="Gradle: guava-14.0.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: hadoop-common-2.0.0-cdh4.4.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: commons-el-1.0" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: slf4j-log4j12-1.6.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: commons-cli-1.2" level="project" />
     <orderEntry type="library" exported="" name="Gradle: jersey-core-1.17.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: asm-3.2" level="project" />
@@ -75,7 +74,6 @@
     <orderEntry type="library" exported="" name="Gradle: datanucleus-rdbms-3.2.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: hive-common-0.10.0-cdh4.4.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: jetty-util-6.1.26" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: servlet-api-2.5-20081211" level="project" />
     <orderEntry type="library" exported="" name="Gradle: jetty-6.1.26" level="project" />
     <orderEntry type="library" exported="" name="Gradle: netty-3.4.0.Final" level="project" />
     <orderEntry type="library" exported="" name="Gradle: velocity-1.7" level="project" />
@@ -140,10 +138,8 @@
     <orderEntry type="library" exported="" name="Gradle: dom4j-1.6.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: reflections-0.9.8" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: hamcrest-core-1.2.1" level="project" />
-<module type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
-    <exclude-output />
-    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="Gradle: slf4j-log4j12-1.6.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: servlet-api-2.5-20081211" level="project" />
   </component>
 </module>
 

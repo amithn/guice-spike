@@ -5,23 +5,23 @@ import com.google.inject.Inject;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class MessageReader implements Runnable {
+public class MessageReader<T extends SSDAEvent> implements Runnable {
 
-    private final Queue queue;
+    private final Queue<T> queue;
     private final ExecutorService service;
 
     @Inject
-    public MessageReader(Queue queue) {
+    public MessageReader(Queue<T> queue) {
         this.queue = queue;
-        this.service = Executors.newFixedThreadPool(2);
+        this.service = Executors.newFixedThreadPool(1);
     }
 
     @Override
     public void run() {
         while(true) {
-            SSDAEvent ssdaEvent = queue.dequeue();
-            System.out.println("Event is " + ssdaEvent.getId());
-            service.execute(new SSDATask(ssdaEvent.getId()));
+            T event = queue.dequeue();
+            System.out.println("Event is " + event.getId());
+            service.execute(new SSDATask(event.getId()));
         }
     }
 }

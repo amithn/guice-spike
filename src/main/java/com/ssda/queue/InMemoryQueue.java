@@ -2,18 +2,15 @@ package com.ssda.queue;
 
 import java.util.concurrent.LinkedBlockingQueue;
 
-/**
- * Author: Amith Nambiar<amith.nmbr@gmail.com>
- * Date: 2/22/14
- */
-public class InMemoryQueue implements Queue {
-    private LinkedBlockingQueue<SSDAEvent> queue = new LinkedBlockingQueue<SSDAEvent>();
+public class InMemoryQueue<T> implements Queue<T> {
+    private LinkedBlockingQueue<T> queue = new LinkedBlockingQueue<T>();
 
-    public void enqueue(SSDAEvent event) {
+    @Override
+    public void enqueue(T event) {
         queue.offer(event);
     }
 
-    public SSDAEvent dequeue() {
+    public T dequeue() {
         try {
             System.out.println("Current number of pending events is " + queue.size());
             return queue.take();

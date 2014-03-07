@@ -2,30 +2,20 @@ package com.ssda.queue;
 
 import com.google.inject.Inject;
 
-public class MessageQueueService {
+public class MessageQueueService<T> {
 
-    private final Queue incomingQ;
-    private final Queue outgoingQ;
+    private final Queue<T> incomingQ;
 
     @Inject
-    public MessageQueueService(Queue incomingQ, Queue outgoingQ) {
+    public MessageQueueService(Queue<T> incomingQ) {
         this.incomingQ = incomingQ;
-        this.outgoingQ = outgoingQ;
     }
 
-    SSDAEvent dequeueIncoming() {
+    T dequeue() {
         return incomingQ.dequeue();
     }
 
-    SSDAEvent dequeueOutgoing() {
-        return outgoingQ.dequeue();
-    }
-
-    void enqueueIncoming(SSDAEvent event) {
+    void enqueue(T event) {
          incomingQ.enqueue(event);
-    }
-
-    void enqueueOutgoing(SSDAEvent event) {
-        outgoingQ.enqueue(event);
     }
 }

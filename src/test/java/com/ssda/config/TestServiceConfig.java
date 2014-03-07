@@ -9,6 +9,7 @@ import com.mongodb.MongoClient;
 import com.ssda.service.*;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
 
 import javax.inject.Named;
 import java.io.IOException;
@@ -33,14 +34,11 @@ public class TestServiceConfig implements Module {
     @Provides
     public Configuration configuration() {
         Configuration config = new Configuration();
-<<<<<<< HEAD:src/test/java/com/ssda/config/TestServiceConfig.java
-=======
         config.addResource(new Path("/etc/hadoop/conf.cloudera.mapreduce1/core-site.xml"));
         config.addResource(new Path("/etc/hadoop/conf.cloudera.mapreduce1/hdfs-site.xml"));
         config.addResource(new Path("/etc/hadoop/conf.cloudera.mapreduce1/mapred-site.xml"));
         config.set("fs.hdfs.impl", org.apache.hadoop.hdfs.DistributedFileSystem.class.getName());
         config.set("fs.file.impl", org.apache.hadoop.fs.LocalFileSystem.class.getName());
->>>>>>> Adding explicit filesystem config to fix the java.io.IOException: No FileSystem for scheme: file issue:src/main/java/com/spike/config/ServiceConfig.java
         return config;
     }
 

@@ -6,6 +6,7 @@ import com.ssda.job.Job;
 import com.ssda.job.JobBuilder;
 import com.ssda.job.JobRunner;
 import com.ssda.queue.MessageQueueService;
+import com.ssda.queue.SSDAEvent;
 import com.ssda.tasks.AggregateCustomersTask;
 import com.ssda.tasks.JoinCustomersHiveTask;
 import com.ssda.tasks.MongoDBTableLoaderTask;
@@ -22,10 +23,10 @@ import javax.ws.rs.core.MediaType;
 public class SSDAResource {
 
     private final JobRunner jobRunner;
-    private final MessageQueueService queueService;
+    private final MessageQueueService<SSDAEvent> queueService;
 
     @Inject
-    public SSDAResource(JobRunner jobRunner, MessageQueueService queueService) {
+    public SSDAResource(JobRunner jobRunner, MessageQueueService<SSDAEvent> queueService) {
         this.jobRunner = jobRunner;
         this.queueService = queueService;
     }
