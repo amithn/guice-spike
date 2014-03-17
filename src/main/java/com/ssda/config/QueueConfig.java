@@ -17,6 +17,6 @@ public class QueueConfig implements Module {
 
     @Provides
     public MessageQueueService queueService(Queue queue) {
-        return new MessageQueueService<SSDAEvent>(queue, queue);
+        return new MessageQueueService<SSDAEvent>(queue);
     }
 }
